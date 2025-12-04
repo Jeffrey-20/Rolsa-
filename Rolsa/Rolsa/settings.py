@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+LOGIN_URL = 'login'  # name of your login URL pattern
+LOGIN_REDIRECT_URL = 'profile'  # optional: where to go after login
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

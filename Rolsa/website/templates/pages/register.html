@@ -3,17 +3,27 @@
 
 {% block content %}
 
-<div class="login-box">
-<form method="POST">
-    {% csrf_token %} {{ form.as_p }} 
+<div class="register-container">
+    <div class="register-left">
+        <h1>Join Us</h1>
+        <p>Subscribe to our tutorials and learn more!</p>
+        <a href="#" class="about-btn">About Us</a>
+    </div>
 
-    <button type="submit">Sign Up</button>
-</form>
+    <div class="register-right">
+        <h2>Register Here</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-<p>Already have an account? <button type="submit" class="login-btn">Log in here</button>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
 
-</div>
+
 
 

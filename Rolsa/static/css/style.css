@@ -14,7 +14,7 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    background: rgba(0, 0, 0, 0.55);  /* semi-transparent overlay */
+    background: rgb(255, 255, 255);  /* semi-transparent overlay */
     color: white;
     z-index: 10;
 }
@@ -144,6 +144,195 @@ body {
     font-weight: bold;
 }
 
+/* REGISTER SECTION STYLES */
+
+
+.register-container {
+    display: flex;
+    max-width: 900px;
+    width: 90%;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.register-left {
+    background: linear-gradient(135deg, #32CD32, #28a745);
+    color: white;
+    flex: 1;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.register-left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.register-left p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.about-btn {
+    padding: 12px 25px;
+    background: white;
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+    background: #f0f0f0;
+    color: #32CD32;
+}
+
+.register-right {
+    flex: 1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-right h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+.register-right form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.register-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #32CD32;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background: #28a745;
+}
+
+@media (max-width: 768px) {
+    .register-container {
+        flex-direction: column;
+        border-radius: 20px;
+    }
+    .register-left, .register-right {
+        flex: unset;
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+/* END REGISTER SECTION STYLES */
+
+
+
+
+
+
+
+
+
+/* Below is for the intro section on homepage  It has a picture and some notes */
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin: 50px 0;
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;
+}
+
+.welcome-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #009523;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+.welcome-text {
+    font-size: 20px;
+    color: #444;
+}
+
+.login-link {
+    color: #009523;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+.login-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #009523;
+    transition: width 0.3s ease;
+}
+
+.login-link:hover::after {
+    width: 100%;
+}
+
+.login-link:hover {
+    color: #007a1d;
+}
+
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* COLLAPSIBLE SECTION STYLES */
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -160,25 +349,31 @@ body {
 
 /* Ensure body and html elements use full width and no default margins */
 html, body {
-    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
+    
 }
 
 /* ------------------- */
 /* 2. FIXED FOOTER POSITIONING */
 /* ------------------- */
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 20;  /* pushes footer to bottom */
+}
+
 #fixed-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #009523;
     color: white;
-    padding: 10px 20px;
-    height:200px;  /* Increased height for new text */
-    z-index: 1000;
+    padding: 40px 20px;
+    width: 100%;                    /* <-- MAGIC that pushes footer to bottom */
 }
 
 /* ------------------- */
@@ -209,7 +404,7 @@ body {
 }
 
 .footer-img {
-    height: 40px;
+    height: 200px;
     width: auto;
     vertical-align: middle;
 }
@@ -224,3 +419,43 @@ body {
 .footer-contact a:hover {
     color: #f39c12;
 }
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #32CD32;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-left a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-right .profile-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nav-right .profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-right .profile-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+

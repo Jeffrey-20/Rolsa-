@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-eL2vGkmDp2n7XrH7yLzXJY1bQJ7yPzWx2rj+ID7O+Se3tW9iQcwW9yF8L0ps4j5f7nXkPp9Ndb4o6K7hPjoxiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
+
+    
+<main>
 
 <!-- NAVBAR (now sitting properly on top of the banner) -->
 <nav class="navbar">
@@ -27,7 +31,9 @@
     <div class="nav-right">
     <a href="{% url 'register' %}" class="cta-btn">get started </a>
 
-        <div class="profile-icon"></div>
+         <a href="{% url 'profile' %}" class="profile-icon" title="Profile">
+            <img src="{% if user.profile.profile_pic %}{{ user.profile.profile_pic.url }}{% else %}{% static 'default_profile.png' %}{% endif %}" alt="Profile">
+        </a>
     </div>
 </nav>
 
@@ -45,12 +51,12 @@
     {% block content %}
     {% endblock %}
 </div>
-
-<script src="{% static 'js/app.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</main>
 
 
+
+
+<!-- FOOTER SECTION -->
 <footer id="fixed-footer">
     <div class="footer-container">
         
@@ -88,6 +94,7 @@
 
     </div>
 </footer>
+
 
 <script src="{% static 'js/app.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>

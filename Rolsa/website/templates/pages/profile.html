@@ -1,0 +1,81 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .profile-container {
+        display: flex;
+        min-height: 80vh;
+        font-family: Arial, sans-serif;
+    }
+    .sidebar {
+        width: 220px;
+        background-color: #32CD32; /* bright green like your screenshot */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .sidebar a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background 0.2s;
+    }
+    .sidebar a:hover {
+        background-color: #28a745;
+        color: white;
+    }
+    .profile-main {
+        flex-grow: 1;
+        padding: 40px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .profile-main img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #ccc; /* placeholder background */
+        margin-bottom: 20px;
+    }
+    .profile-main h2 {
+        margin: 0;
+    }
+</style>
+
+<div class="profile-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{% url 'profile' %}">Personal Profile</a>
+        <a href="{% url 'login' %}">Register and Login</a>
+        <a href="#">Customer Support</a>
+        <a href="#">Purchase History</a>
+        <a href="#">Your Bookings</a>
+        <a href="#">Security and Password</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <!-- Main Profile Section -->
+    <div class="profile-main">
+        {% if user.profile.profile_pic %}
+            <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'default_profile.png' %}" alt="Profile Picture">
+        {% endif %}
+
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p>{{ user.email }}</p>
+        <p>{{ user.profile.phone_number }}</p>
+        <p>{{ user.profile.address }}</p>
+        <p>{{ user.profile.postcode }}</p>
+    </div>
+</div>
+{% endblock %}

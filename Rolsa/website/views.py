@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm, EmailAuthenticationForm
-
+from .models import Profile
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -17,7 +18,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('profile')
     else:
         form = CustomUserCreationForm()
 
@@ -59,3 +60,8 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home') # Redirecst the user back to the homepage
+
+
+@login_required
+def profile_view(request):
+    return render(request, 'pages/profile.html')
