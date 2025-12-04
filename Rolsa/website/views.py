@@ -24,6 +24,9 @@ def register_view(request):
 
     return render(request, 'pages/register.html', {'form': form})
 
+
+
+
 # --- Login View (custom authentication using email) ---
 def login_view(request):
     if request.method == 'POST':
@@ -44,7 +47,7 @@ def login_view(request):
             if user is not None and user.check_password(password):
                 # 3. If authenticated, log the user in
                 login(request, user)
-                return redirect('home')
+                return redirect('profile')
             else:
                 # If email not found or password incorrect, add a non-field error
                 form.add_error(None, "Invalid email or password.")
@@ -59,7 +62,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home') # Redirecst the user back to the homepage
+    return redirect('') # Redirecst the user back to the homepage
 
 
 @login_required
