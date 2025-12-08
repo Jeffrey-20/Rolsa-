@@ -1,34 +1,123 @@
-
 {% extends 'pages/base.html' %}
 
 {% block content %}
+
+<style>
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+.register-container {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.register-left {
+    flex: 1;
+    background-color: #32CD32;
+    color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.register-left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.register-left p {
+    margin-bottom: 30px;
+}
+.about-btn {
+    background-color: white;
+    color: #32CD32;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.register-right {
+    flex: 1;
+    padding: 50px;
+}
+.register-right h2 {
+    margin-bottom: 30px;
+}
+.register-right form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #32CD32;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.register-btn:hover {
+    background-color: #28a745;
+}
+.welcome-text {
+    margin-top: 15px;
+    text-align: center;
+}
+.login-link {
+    color: #32CD32;
+    font-weight: bold;
+    text-decoration: none;
+}
+.login-link:hover {
+    text-decoration: underline;
+}
+</style>
 
 <div class="register-wrapper">
 <div class="register-container">
     <div class="register-left">
         <h1>Join Us</h1>
         <p>Subscribe to our tutorials and learn more!</p>
-        <a href="{% url 'services' %}" class="about-btn">Our services</a>
+        <a href="{% url 'services' %}" class="about-btn">Our Services</a>
     </div>
 
     <div class="register-right">
         <h2>Register Here</h2>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+
+           {% if form.non_field_errors %}
+  <div class="text-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+{% for field in form %}
+  <div>
+    {{ field.label_tag }}
+    {{ field }}
+    {% for error in field.errors %}
+      <div class="text-danger">{{ error }}</div>
+    {% endfor %}
+  </div>
+{% endfor %}
 
             <button type="submit" class="register-btn">Register</button>
         </form>
         <p class="welcome-text">
-        Already have an account?
-        <a href="{% url 'login' %}" class="login-link">Login here</a>
-    </p>
+            Already have an account?
+            <a href="{% url 'login' %}" class="login-link">Login here</a>
+        </p>
     </div>
 </div>
 </div>
 
+
 {% endblock %}
-
-
-
-

@@ -6,6 +6,8 @@ from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import InstallationBookingForm
+from django.contrib.auth import login
+
 # Create your views here.
 
 def home(request):
@@ -16,14 +18,13 @@ def home(request):
 # Registeration page
 def register_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST) # Uses the new form
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('profile')
     else:
         form = CustomUserCreationForm()
-
     return render(request, 'pages/register.html', {'form': form})
 
 

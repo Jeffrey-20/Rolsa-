@@ -1,154 +1,162 @@
-
 {% extends "pages/base.html" %}
 {% load static %}
 
 {% block banner_buttons %}
-
-
-
 <div class="banner-buttons">
    <h2 style="font-size: 3rem; color: rgb(0, 83, 4);">Your Profile</h2>
-
 </div>
-
-
 {% endblock %}
-
-
-
-
 
 {% block content %}
 <style>
-    .profile-container {
-        display: flex;
-        min-height: 80vh;
+    body {
+        margin: 0;
         font-family: Arial, sans-serif;
     }
+
+    .layout-container {
+        display: block;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Left Navbar */
     .sidebar {
-        width: 220px;
-        background-color: #32CD32; /* bright green like your screenshot */
-        padding: 20px;
+        width: 200px;
+        background-color: #2ecc71;
+        padding: 20px 15px;
         display: flex;
         flex-direction: column;
         gap: 15px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
     }
-    .sidebar a {
-        color: black;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background 0.2s;
-    }
-    .sidebar a:hover {
-        background-color: #28a745;
+
+    .sidebar h2 {
         color: white;
+        margin-bottom: 20px;
+        font-weight: bold;
     }
-    .profile-main {
-        flex-grow: 1;
+
+    .sidebar a {
+        padding: 12px;
+        background: white;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #2c3e50;
+        transition: 0.2s;
+    }
+
+    .sidebar a:hover, .active-link {
+        background: #27ae60 !important;
+        color: white !important;
+    }
+
+    /* Right content */
+    .content-section {
+        margin-left: 210px;
         padding: 40px;
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        height: 100vh;
+        overflow-y: scroll;
+        background-color: #f7f7f7;
     }
+
+    .content-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+
     .profile-main img {
         width: 120px;
         height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        background-color: #ccc; /* placeholder background */
+        background-color: #ccc;
         margin-bottom: 20px;
-    }
-    .profile-main h2 {
-        margin: 0;
     }
 </style>
 
+<div class="layout-container">
 
-
-
-
-<div class="profile-container">
+    <!-- Left Sidebar Navigation -->
     <div class="sidebar">
-        <a href="#" class="nav-button active-link" data-target="profile-content">Personal Profile</a>
-        
+        <h2>Your Profile</h2>
+        <a href="#profile" class="nav-button active-link" data-target="profile-content">Personal Profile</a>
         <a href="{% url 'login' %}">Register and Login</a>
-        
         <a href="#" class="nav-button" data-target="support-content">Customer Support</a>
         <a href="#" class="nav-button" data-target="history-content">Purchase History</a>
         <a href="#" class="nav-button" data-target="bookings-content">Your Bookings</a>
-        <a href="#" class="nav-button" data-target="security-content">Security and Password</a>
-        
+        <a href="#" class="nav-button" data-target="security-content">Security & Password</a>
         <a href="{% url 'logout' %}">Logout</a>
     </div>
 
-    <div class="profile-main">
-        
-        <div id="profile-content" class="content-page active">
-            <h3>Personal Profile</h3>
-            {% if user.profile.profile_pic %}
-                <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
-            {% else %}
-                <img src="{% static 'default_profile.png' %}" alt="Profile Picture">
-            {% endif %}
+    <!-- Right Scrollable Content -->
+    <div class="content-section">
 
+        <div id="profile-content" class="content-box content-page active">
+            <h3>Personal Profile</h3>
+            <i class="fas fa-user-circle" style="font-size: 120px; color: #777;"></i>
             <h2>{{ user.first_name }} {{ user.last_name }}</h2>
             <p>{{ user.email }}</p>
             <p>{{ user.profile.phone_number }}</p>
             <p>{{ user.profile.address }}</p>
-            </div>
+        </div>
 
-        <div id="support-content" class="content-page hidden">
+        <div id="support-content" class="content-box content-page hidden">
             <h3>Customer Support</h3>
             <p>Here you can find FAQs or contact information...</p>
         </div>
 
-        <div id="history-content" class="content-page hidden">
+        <div id="history-content" class="content-box content-page hidden">
             <h3>Purchase History</h3>
-            <table>
-                </table>
+            <p>No purchases yet.</p>
         </div>
-        
+
+        <div id="bookings-content" class="content-box content-page hidden">
+            <h3>Your Bookings</h3>
+            <p>Booking details will appear here.</p>
         </div>
+
+        <div id="security-content" class="content-box content-page hidden">
+            <h3>Security & Password</h3>
+            <p>Manage your password and security settings.</p>
+        </div>
+
+    </div>
+
 </div>
-
-
-
-
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const navButtons = document.querySelectorAll('.nav-button');
-        const contentPages = document.querySelectorAll('.content-page');
+        const pages = document.querySelectorAll('.content-page');
 
-        navButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevents the browser from following the '#' link
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
 
-                const targetId = button.getAttribute('data-target'); // e.g., 'history-content'
+                const target = btn.getAttribute('data-target');
 
-                // 1. Hide all content pages and remove 'active' link classes
-                contentPages.forEach(page => {
-                    page.classList.remove('active');
-                    page.classList.add('hidden');
-                });
-                navButtons.forEach(nav => {
-                    nav.classList.remove('active-link');
+                pages.forEach(p => {
+                    p.classList.add('hidden');
+                    p.classList.remove('active');
                 });
 
-                // 2. Show the target content page
-                const targetPage = document.getElementById(targetId);
-                if (targetPage) {
-                    targetPage.classList.remove('hidden');
-                    targetPage.classList.add('active');
-                    
-                    // 3. Highlight the clicked link
-                    button.classList.add('active-link');
+                navButtons.forEach(n => n.classList.remove('active-link'));
+
+                const page = document.getElementById(target);
+                if (page) {
+                    page.classList.remove('hidden');
+                    page.classList.add('active');
+                    btn.classList.add('active-link');
                 }
             });
         });
