@@ -27,18 +27,25 @@
         <a href="{% url '' %}">Home</a>
         <a href="{% url 'company' %}">Company</a>
         <a href="{% url 'services' %}">Services</a>
-        <a href="#">FAQS</a>
+        <a href="{% url 'facts' %}">FAQS</a>
         <a href="#">Installation </a>
         <a href="#">Inventory</a>
         <a href="#">Consultation</a>
+        <a href="#">Carbon Calculator</a>
 
     </div>
 
     <div class="nav-right">
     <a href="{% url 'register' %}" class="cta-btn">get started </a>
 
-         <a href="{% url 'profile' %}" class="profile-icon" title="Profile">
-            <img src="{% if user.profile.profile_pic %}{{ user.profile.profile_pic.url }}{% else %}{% static 'default_profile.png' %}{% endif %}" alt="Profile">
+        <a href="{% url 'profile' %}" class="profile-icon" title="Profile">
+            {% if user.profile.profile_pic %}
+                <img src="{{ user.profile.profile_pic.url }}" alt="Profile" class="profile-img">
+            {% else %}
+                <i class="fa-solid fa-user profile-icon"></i>
+            {% endif %}
+
+
         </a>
     </div>
 </nav>

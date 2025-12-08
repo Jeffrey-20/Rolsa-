@@ -2,6 +2,22 @@
 {% extends "pages/base.html" %}
 {% load static %}
 
+{% block banner_buttons %}
+
+
+
+<div class="banner-buttons">
+   <h2 style="font-size: 3rem; color: rgb(0, 83, 4);">Your Profile</h2>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
 {% block content %}
 <style>
     .profile-container {
@@ -60,6 +76,10 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="{% url 'profile' %}">Personal Profile</a>
+
+
+
+        
         <a href="{% url 'login' %}">Register and Login</a>
         <a href="#">Customer Support</a>
         <a href="#">Purchase History</a>

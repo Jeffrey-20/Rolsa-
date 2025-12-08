@@ -1,0 +1,109 @@
+
+{% extends 'pages/base.html' %}
+
+
+
+{% block banner_buttons %}
+
+
+
+<div class="banner-buttons">
+   <h2 style="font-size: 3rem; color: rgb(0, 83, 4);">FAQS</h2>
+
+</div>
+
+
+    {% endblock %}
+
+    
+{% block content %}
+
+<style>
+
+
+.container {
+    max-width: 2300px;
+    margin: auto;
+    padding: 20px;
+}
+ 
+
+.collapsible {
+  background-color: #3b3b3b;
+  color: white;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  margin-left: -20px;   /* cancel container padding */
+  margin-right: -20px;  /* cancel container padding */
+}
+
+.h2 {
+  padding: center;
+}
+
+.active, .collapsible:hover {
+  background-color: #003314;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
+
+
+<div class="container mt-5 mb-5">
+
+
+<h2> Company Facts</h2>
+
+<!-- The first button of the collapse function -->
+<button type="button" class="collapsible">Open Section 1</button>
+<div class="content">
+  <p>
+    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+     nisi ut aliquip ex ea commodo consequa
+    
+    
+    </p>
+
+</div>
+
+
+<!-- The second button of the collapse function -->
+<button type="button" class="collapsible">Open Section 2</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+
+<!-- The third button of the collapse function -->
+<button type="button" class="collapsible">Open Section 3</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</div>
+
+{% endblock %}

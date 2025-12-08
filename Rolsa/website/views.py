@@ -60,19 +60,29 @@ def login_view(request):
 ##
 
 
+# Logout View
 def logout_view(request):
     logout(request)
     return redirect('') # Redirecst the user back to the homepage
 
 
+
+# Viewing the profile
+# the user must be logged in to view their profile
 @login_required
 def profile_view(request):
     return render(request, 'pages/profile.html')
 
 
-
+# Services Page you do not need to be logged in to view the services page
 def services_view(request):
     return render(request, 'pages/services.html')
 
+# You do not need to be logged in to view the company page
 def company(request):
     return render(request , 'pages/company.html')
+
+
+# Facts Page
+def facts(request):
+    return render(request, 'pages/facts.html')
