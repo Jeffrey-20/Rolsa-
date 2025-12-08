@@ -1,0 +1,365 @@
+
+/* --- Base Page Styles --- */
+.company-page-container {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #003d19;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.company-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.company-section h2 {
+    font-size: 2.8em;
+    color: #0078a8; /* Rolsa Blue */
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.company-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #00a878; /* Rolsa Green */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.section-icon {
+    font-size: 3em;
+    color: #00a878; /* Rolsa Green */
+    margin-bottom: 15px;
+}
+
+/* --- Buttons --- */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: #00a878; /* Rolsa Green */
+    color: white;
+    border: 2px solid #00a878;
+}
+
+.btn-primary:hover {
+    background-color: #0078a8; /* Rolsa Blue on hover */
+    border-color: #0078a8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #0078a8; /* Rolsa Blue */
+    border: 2px solid #0078a8;
+}
+
+.btn-secondary:hover {
+    background-color: #0078a8;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- Hero Section --- */
+.company-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static "images/solar_panels_hero.jpg" %}') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #b3e0ff; /* Lighter blue */
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* --- Mission & Vision Section --- */
+.mission-vision .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.mission-vision .mission,
+.mission-vision .vision {
+    flex: 1 1 45%; /* Takes almost half width */
+    max-width: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.mission-vision .mission:hover,
+.mission-vision .vision:hover {
+    transform: translateY(-5px);
+}
+
+.mission-vision h3 {
+    font-size: 2em;
+    color: #0078a8;
+    margin-bottom: 15px;
+}
+
+.mission-vision p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+
+/* --- Values Section --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.value-icon {
+    font-size: 2.5em;
+    color: #00a878; /* Rolsa Green */
+    margin-bottom: 15px;
+}
+
+.value-item h4 {
+    font-size: 1.5em;
+    color: #0078a8;
+    margin-bottom: 10px;
+}
+
+.value-item p {
+    color: #002b0d;
+}
+
+/* --- Journey/Timeline Section --- */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #00a878; /* Rolsa Green timeline line */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: #0078a8; /* Rolsa Blue dot */
+    border: 4px solid #f8f8f8; /* Matches background */
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 60px;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 60px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -17px;
+}
+
+.timeline-item h4 {
+    font-size: 1.6em;
+    color: #0078a8;
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    font-size: 1.05em;
+    color: #555;
+}
+
+/* --- Call to Action Section --- */
+.company-cta {
+    background-color: #0078a8; /* Rolsa Blue background */
+    color: white;
+    padding: 80px 20px;
+}
+
+.company-cta h3 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Apply Animations with delays --- */
+.animate-fade-in {
+    opacity: 0; /* Hidden by default */
+    animation: fadeIn 1s ease forwards;
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: slideUp 1s ease forwards;
+}
+
+.animate-zoom-in {
+    opacity: 0;
+    animation: zoomIn 0.8s ease forwards;
+}
+
+/* Delay classes */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .company-hero {
+        padding: 80px 20px;
+        min-height: 400px;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+    .company-section h2 {
+        font-size: 2em;
+    }
+    .mission-vision .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mission-vision .mission,
+    .mission-vision .vision {
+        flex: 1 1 100%;
+        max-width: 90%;
+    }
+    .timeline::before {
+        left: 10px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 20px;
+    }
+    .timeline-item::after {
+        left: 3px;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0%;
+        padding-left: 40px;
+    }
+    .timeline-item:nth-child(even)::after {
+        left: 3px;
+    }
+    .company-cta h3 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content h2 {
+        font-size: 1.2em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}

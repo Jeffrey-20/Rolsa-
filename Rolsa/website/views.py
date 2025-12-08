@@ -73,3 +73,6 @@ def profile_view(request):
 
 def services_view(request):
     return render(request, 'pages/services.html')
+
+def company(request):
+    return render(request , 'pages/company.html')
