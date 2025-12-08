@@ -67,8 +67,21 @@
   margin-bottom: 20px;
 }
 
+#faqSearch {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #009b2a;
+  outline: none;
+}
+
 
 </style>
+
+<input type="text" id="faqSearch" placeholder="Search questions..." onkeyup="searchFAQ()">
+
 
 <!-- Q1 -->
 <button type="button" class="collapsible">What services does Rolsa Green Energy provide?</button>
@@ -281,10 +294,131 @@
   <p>You can reach us by phone, email, or the contact form on our website. Responses typically take less than 24 hours.</p>
 </div>
 
+<!-- Q36 -->
+<button type="button" class="collapsible">What are Rolsa Green Energy’s core values?</button>
+<div class="content">
+  <p>Our core values are sustainability, honesty, innovation, customer transparency, and long-term environmental responsibility.</p>
+</div>
 
+<!-- Q37 -->
+<button type="button" class="collapsible">When was Rolsa Green Energy founded?</button>
+<div class="content">
+  <p>Rolsa Green Energy was founded in 2015 with the goal of making clean energy accessible to everyone.</p>
+</div>
+
+<!-- Q38 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy reduce carbon footprints?</button>
+<div class="content">
+  <p>We provide solar systems, home batteries, and energy-efficient solutions that significantly reduce grid reliance and carbon emissions.</p>
+</div>
+
+<!-- Q39 -->
+<button type="button" class="collapsible">Can Rolsa Green Energy calculate my home's carbon savings?</button>
+<div class="content">
+  <p>Yes. During your assessment, we provide an estimated annual CO₂ reduction based on your solar system size and energy usage.</p>
+</div>
+
+<!-- Q40 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy ensure product quality?</button>
+<div class="content">
+  <p>We partner with top-tier manufacturers and only use MCS-certified installers to guarantee long-lasting, efficient systems.</p>
+</div>
+
+<!-- Q41 -->
+<button type="button" class="collapsible">Do you offer energy financing for businesses?</button>
+<div class="content">
+  <p>Yes. We provide tailored financing packages for commercial clients, including lease-to-own and green business loans.</p>
+</div>
+
+<!-- Q42 -->
+<button type="button" class="collapsible">Are there government grants or incentives available?</button>
+<div class="content">
+  <p>Several green energy incentives and export tariffs are available depending on location. We help customers apply for all eligible schemes.</p>
+</div>
+
+<!-- Q43 -->
+<button type="button" class="collapsible">Does Rolsa Green Energy use sustainable materials?</button>
+<div class="content">
+  <p>Yes. Our panels and mounting systems use recyclable materials, and we work with suppliers that follow strict environmental standards.</p>
+</div>
+
+<!-- Q44 -->
+<button type="button" class="collapsible">What makes Rolsa Green Energy different from other solar companies?</button>
+<div class="content">
+  <p>We focus on long-term customer support, transparent pricing, industry-leading warranties, and fully customizable renewable solutions.</p>
+</div>
+
+<!-- Q45 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy support the community?</button>
+<div class="content">
+  <p>We regularly support local environmental projects, provide educational workshops, and invest in green initiatives across the UK.</p>
+</div>
+
+<!-- Q46 -->
+<button type="button" class="collapsible">Who founded Rolsa Green Energy?</button>
+<div class="content">
+  <p>Rolsa Green Energy was founded by a group of renewable-energy specialists who wanted to make affordable green energy accessible to all households.</p>
+</div>
+
+<!-- Q47 -->
+<button type="button" class="collapsible">When was Rolsa Green Energy established?</button>
+<div class="content">
+  <p>The company was founded in 2015 and has grown to become one of the region’s most trusted renewable energy providers.</p>
+</div>
+
+<!-- Q48 -->
+<button type="button" class="collapsible">Why was Rolsa Green Energy created?</button>
+<div class="content">
+  <p>Our founders wanted to reduce carbon emissions, lower household energy bills, and accelerate the UK’s transition to clean, renewable power.</p>
+</div>
+
+<!-- Q49 -->
+<button type="button" class="collapsible">What inspired the name “Rolsa Green Energy”?</button>
+<div class="content">
+  <p>The name represents our commitment to ‘rolling forward’ sustainable solutions and providing environmentally friendly energy options.</p>
+</div>
+
+<!-- Q50 -->
+<button type="button" class="collapsible">How has Rolsa Green Energy evolved since it began?</button>
+<div class="content">
+  <p>Since 2015, we’ve expanded from small local installations to large-scale solar, battery, and EV charging solutions for both homes and businesses.</p>
+</div>
+
+<!-- Q51 -->
+<button type="button" class="collapsible">What was Rolsa Green Energy’s first major project?</button>
+<div class="content">
+  <p>Our first large project involved a residential solar installation that reduced the customer’s energy bills by 60%, setting the standard for our future work.</p>
+</div>
+
+<!-- Q52 -->
+<button type="button" class="collapsible">What challenges did the company face early on?</button>
+<div class="content">
+  <p>Early challenges included limited public awareness of renewable energy options and the high cost of solar technology at the time.</p>
+</div>
+
+<!-- Q53 -->
+<button type="button" class="collapsible">How many employees did Rolsa Green Energy start with?</button>
+<div class="content">
+  <p>The company began with a small team of five engineers and admin staff. Today, we employ a much larger team of certified energy professionals.</p>
+</div>
+
+<!-- Q54 -->
+<button type="button" class="collapsible">Has Rolsa Green Energy stayed true to its original mission?</button>
+<div class="content">
+  <p>Yes. Our mission has always been sustainability, transparency, and affordable green energy — values that still guide every decision we make.</p>
+</div>
+
+<!-- Q55 -->
+<button type="button" class="collapsible">What are Rolsa Green Energy’s future goals?</button>
+<div class="content">
+  <p>Our future goals include expanding into smart-home integration, improving battery technology, and continuing to reduce carbon emissions nationwide.</p>
+</div>
 
 
  
+<!-- End of FAQs  -->
+
+<!-- JavaScript for collapsible functionality -->
 <script>
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -299,6 +433,25 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
+}
+
+
+function searchFAQ() {
+    let input = document.getElementById('faqSearch').value.toLowerCase();
+    let questions = document.getElementsByClassName('collapsible');
+
+    for (let i = 0; i < questions.length; i++) {
+        let text = questions[i].innerText.toLowerCase();
+
+        // If the heading contains the searched word
+        if (text.includes(input)) {
+            questions[i].style.display = "";
+            questions[i].nextElementSibling.style.display = "none"; // keep it closed when filtering
+        } else {
+            questions[i].style.display = "none";
+            questions[i].nextElementSibling.style.display = "none"; // hide content
+        }
+    }
 }
 </script>
 </div>
