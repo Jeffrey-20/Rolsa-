@@ -103,4 +103,25 @@
         <p>{{ user.profile.postcode }}</p>
     </div>
 </div>
+
+
+
+<h2>Your Installation Bookings</h2>
+
+
+    <ul>
+      
+            <li>
+                <strong>{{ booking.installation_type }}</strong><br>
+                Date: {{ booking.installation_date }}<br>
+                Address: {{ booking.address }}<br>
+                Status: Submitted on {{ booking.submitted_at }}
+            </li>
+            <hr>
+      
+    </ul>
+
+    <p>You have no installation bookings yet.</p>
+
+
 {% endblock %}

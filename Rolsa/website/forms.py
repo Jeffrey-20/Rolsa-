@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import InstallationBooking
+import datetime
 
 # ------------------------------------
 # 1. Custom Registration Form (using Email for uniqueness)
@@ -41,3 +43,36 @@ class EmailAuthenticationForm(forms.Form):
         strip=False,
         widget=forms.PasswordInput
     )
+
+
+class InstallationBookingForm(forms.ModelForm):
+    installation_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+    )
+
+    class Meta:
+        model = InstallationBooking
+        fields = [
+            "full_name",
+            "email",
+            "phone",
+            "address",
+            "installation_date",
+            "installation_type",
+            "notes",
+        ]
+
+    def clean_installation_date(self):
+        date = self.cleaned_data["installation_date"]
+        today = datetime.date.today()
+
+        if date < today:
+            raise forms.ValidationError("You cannot select a past date.")
+
+        if date.weekday() in (5, 6):  # No weekends
+            raise forms.ValidationError("Installations cannot be booked on weekends.")
+
+        return date
+    
+# This is the end for the installation
+

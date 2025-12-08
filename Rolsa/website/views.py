@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm, EmailAuthenticationForm
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import InstallationBookingForm
 # Create your views here.
 
 def home(request):
@@ -86,3 +88,18 @@ def company(request):
 # Facts Page
 def facts(request):
     return render(request, 'pages/facts.html')
+
+
+def installation(request):
+    if request.method == "POST":
+        form = InstallationBookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = request.user  # link to logged-in user
+            booking.save()
+            messages.success(request, "Your installation booking has been submitted and saved to your profile!")
+            return redirect("profile")  # redirect to profile page
+    else:
+        form = InstallationBookingForm()
+
+    return render(request, "pages/installation.html", {"form": form})
