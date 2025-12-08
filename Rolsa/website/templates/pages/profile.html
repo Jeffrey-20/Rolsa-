@@ -71,57 +71,88 @@
 
 
 
-
 <div class="profile-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-        <a href="{% url 'profile' %}">Personal Profile</a>
-
-
-
+        <a href="#" class="nav-button active-link" data-target="profile-content">Personal Profile</a>
         
         <a href="{% url 'login' %}">Register and Login</a>
-        <a href="#">Customer Support</a>
-        <a href="#">Purchase History</a>
-        <a href="#">Your Bookings</a>
-        <a href="#">Security and Password</a>
+        
+        <a href="#" class="nav-button" data-target="support-content">Customer Support</a>
+        <a href="#" class="nav-button" data-target="history-content">Purchase History</a>
+        <a href="#" class="nav-button" data-target="bookings-content">Your Bookings</a>
+        <a href="#" class="nav-button" data-target="security-content">Security and Password</a>
+        
         <a href="{% url 'logout' %}">Logout</a>
     </div>
 
-    <!-- Main Profile Section -->
-    <div class="profile-main" >
-        {% if user.profile.profile_pic %}
-            <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
-        {% else %}
-            <img src="{% static 'default_profile.png' %}" alt="Profile Picture">
-        {% endif %}
+    <div class="profile-main">
+        
+        <div id="profile-content" class="content-page active">
+            <h3>Personal Profile</h3>
+            {% if user.profile.profile_pic %}
+                <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
+            {% else %}
+                <img src="{% static 'default_profile.png' %}" alt="Profile Picture">
+            {% endif %}
 
-        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-        <p>{{ user.email }}</p>
-        <p>{{ user.profile.phone_number }}</p>
-        <p>{{ user.profile.address }}</p>
-        <p>{{ user.profile.postcode }}</p>
-    </div>
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            <p>{{ user.email }}</p>
+            <p>{{ user.profile.phone_number }}</p>
+            <p>{{ user.profile.address }}</p>
+            </div>
+
+        <div id="support-content" class="content-page hidden">
+            <h3>Customer Support</h3>
+            <p>Here you can find FAQs or contact information...</p>
+        </div>
+
+        <div id="history-content" class="content-page hidden">
+            <h3>Purchase History</h3>
+            <table>
+                </table>
+        </div>
+        
+        </div>
 </div>
 
 
 
-<h2>Your Installation Bookings</h2>
 
 
-    <ul>
-      
-            <li>
-                <strong>{{ booking.installation_type }}</strong><br>
-                Date: {{ booking.installation_date }}<br>
-                Address: {{ booking.address }}<br>
-                Status: Submitted on {{ booking.submitted_at }}
-            </li>
-            <hr>
-      
-    </ul>
 
-    <p>You have no installation bookings yet.</p>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navButtons = document.querySelectorAll('.nav-button');
+        const contentPages = document.querySelectorAll('.content-page');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevents the browser from following the '#' link
+
+                const targetId = button.getAttribute('data-target'); // e.g., 'history-content'
+
+                // 1. Hide all content pages and remove 'active' link classes
+                contentPages.forEach(page => {
+                    page.classList.remove('active');
+                    page.classList.add('hidden');
+                });
+                navButtons.forEach(nav => {
+                    nav.classList.remove('active-link');
+                });
+
+                // 2. Show the target content page
+                const targetPage = document.getElementById(targetId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                    targetPage.classList.add('active');
+                    
+                    // 3. Highlight the clicked link
+                    button.classList.add('active-link');
+                }
+            });
+        });
+    });
+</script>
 
 {% endblock %}
