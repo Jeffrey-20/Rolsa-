@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTHENTICATION_BACKENDS = ['website.backends.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
+
+AUTHENTICATION_BACKENDS = [
+    'website.backends.EmailBackend',  
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Application definition
 
@@ -127,3 +133,13 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKENDS = [
+    'website.backends.EmailBackend',  
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AUTH_USER_MODEKL = 'website.user'  # Pointing to the custom user model
+
+

@@ -1,32 +1,53 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import EmailValidator
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class CustomUser(AbstractUser):
+    # Your custom fields
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=255, blank=True)
     postcode = models.CharField(max_length=10, blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 
+    # --------------------------------------------------------------------
+    # FIX: Override the default AbstractUser fields to provide unique related_names
+    # --------------------------------------------------------------------
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_name="custom_user_set", # <--- UNIQUE RELATED NAME FIX
+        related_query_name="custom_user",
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name="custom_permission_set", # <--- UNIQUE RELATED NAME FIX
+        related_query_name="custom_user_permission",
+    )
+    
     def __str__(self):
-        return f"{self.user.username} Profile"
-
+        return self.email or self.username
 
 
 class InstallationBooking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="installations")
+    # CRITICAL: Use settings.AUTH_USER_MODEL for ForeignKeys
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="installations")
 
     full_name = models.CharField(max_length=100)
     email = models.EmailField(validators=[EmailValidator()])
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
-
+    
     installation_date = models.DateField()
     installation_type = models.CharField(
         max_length=50,
@@ -34,7 +55,8 @@ class InstallationBooking(models.Model):
             ("Solar Panel", "Solar Panel Installation"),
             ("EV Charger", "EV Charger Installation"),
             ("Battery Storage", "Battery Storage Setup"),
-            ("Other", "Other"),
+            ("maintenance", "General Maintenance"),
+            ("inverters", "Inverter Installation"),
         ]
     )
 
