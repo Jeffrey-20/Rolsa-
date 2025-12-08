@@ -75,7 +75,9 @@ class EmailAuthenticationForm(forms.Form):
         widget=forms.PasswordInput
     )
 
-
+class LoginForm(forms.Form):
+    email = forms.EmailField(label="Email")
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
 # ------------------------------------
 # C. Installation Booking Form
 # ------------------------------------
