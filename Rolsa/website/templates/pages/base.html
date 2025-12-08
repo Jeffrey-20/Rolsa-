@@ -8,6 +8,7 @@
     <title>{% block title %}Rolsa Technologies{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/services.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-eL2vGkmDp2n7XrH7yLzXJY1bQJ7yPzWx2rj+ID7O+Se3tW9iQcwW9yF8L0ps4j5f7nXkPp9Ndb4o6K7hPjoxiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -24,10 +25,11 @@
         <a class="logo" href="{% url '' %}">Rolsa Technology</a>
         <a href="{% url '' %}">Home</a>
         <a href="#">Company</a>
-        <a href="#">Services</a>
+        <a href="{% url 'services' %}">Services</a>
         <a href="#">FAQS</a>
         <a href="#">Installation </a>
         <a href="#">Inventory</a>
+        <a href="#">Consultation</a>
 
     </div>
 

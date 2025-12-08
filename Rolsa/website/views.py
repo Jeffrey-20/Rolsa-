@@ -68,3 +68,8 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'pages/profile.html')
+
+
+
+def services_view(request):
+    return render(request, 'pages/services.html')

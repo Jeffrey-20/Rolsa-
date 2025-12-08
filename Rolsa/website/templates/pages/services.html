@@ -1,20 +1,51 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
 
 <div class="display">
-    <div class="display-item">
-        <img src="https://picsum.photos/400/300" alt="Solar Panels">
-        <h3>Solar Panel Installation</h3>
-        <p>Harness the power of the sun with our state-of-the-art solar panel systems, designed to maximize energy efficiency and reduce your carbon footprint.</p>
-    </div>
-    <div class="display-item">
-        <img src="https://picsum.photos/400/301" alt="Battery Storage">
-        <h3>Battery Storage Solutions</h3>
-        <p>Store excess energy for later use with our advanced battery storage solutions, ensuring you have power when you need it most.</p>
-    </div>
-    <div class="display-item">
-        <img src="https://picsum.photos/400/302" alt="Energy Management">
-        <h3>Smart Energy Management</h3>
-        <p>Optimize your energy consumption with our intelligent management systems that adapt to your lifestyle and usage patterns.</p>
+
+    <div class="card">
+       <img src="{% static 'images/solar_panels.png' %}" alt="installations" class="services-image">
+        <h3>Installations</h3>
+        <a href="#" class="service-button">Tell Me More</a>
     </div>
 
+    <div class="card">
+        <img src="{% static 'images/retail.png' %}" alt="Services Image" class="services-image">
+        <h3>Retail services</h3>
+        
+        <a href="#" class="service-button">Tell Me More</a>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/finance.png' %}" alt="Services Image" class="services-image">
+        <h3>Finance Advice</h3>
+        
+        <a href="#" class="service-button">Tell Me More</a>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/consult.png' %}" alt="Services Image" class="services-image">
+        <h3>Consultations</h3>
+        
+        <a href="#" class="service-button">Tell Me More</a>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/maintain.png' %}" alt="Services Image" class="services-image">
+        <h3>Maintanance</h3>
+        
+        <a href="#" class="service-button">Tell Me More</a>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/carbon.png' %}" alt="Services Image" class="services-image">
+        <h3>Reducing and Calculating Carbon Footprint</h3>
+        
+        <a href="#" class="service-button">Tell Me More</a>
+    </div>
 
 </div>
+
+{% endblock %}
