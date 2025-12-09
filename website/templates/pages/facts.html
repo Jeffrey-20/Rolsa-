@@ -1,0 +1,461 @@
+
+{% extends 'pages/base.html' %}
+
+
+
+{% block banner_buttons %}
+
+
+
+<div class="banner-buttons">
+   <h2 style="font-size: 3rem; color: rgb(0, 83, 4);">FAQS</h2>
+
+</div>
+
+
+    {% endblock %}
+
+    
+{% block content %}
+
+<style>
+
+
+.container {
+    max-width: 2300px;
+    margin: auto;
+    padding: 20px;
+}
+ 
+.collapsible {
+  background-color: #009b2a;         /* brighter green */
+  color: #ffffff;                     /* bright white text */
+  cursor: pointer;
+  padding: 25px;                      /* bigger button */
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;                    /* larger text */
+  font-weight: 600;                   /* clearer text */
+  border-radius: 10px;                /* slight curve */
+  margin-bottom: 10px;                /* spacing between items */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.collapsible:hover {
+  background-color: #00b933;          /* brighter on hover */
+  transform: scale(1.02);             /* slight pop-out */
+}
+
+/* Active state when opened */
+.active {
+  background-color: #007a22;          /* darker when open */
+}
+
+/* Content box */
+.content {
+  padding: 15px 20px;
+  display: none;
+  overflow: hidden;
+  background-color: #e8ffe7;          /* light green background */
+  color: #003a0f;                     /* dark readable text */
+  border-left: 5px solid #009b2a;     /* clean accent bar */
+  border-radius: 0 0 10px 10px;       /* curved bottom */
+  font-size: 18px;                    /* larger content text */
+  margin-bottom: 20px;
+}
+
+#faqSearch {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #009b2a;
+  outline: none;
+}
+
+
+</style>
+
+<input type="text" id="faqSearch" placeholder="Search questions..." onkeyup="searchFAQ()">
+
+
+<!-- Q1 -->
+<button type="button" class="collapsible">What services does Rolsa Green Energy provide?</button>
+<div class="content">
+  <p>Rolsa Green Energy provides solar panel installation, home battery systems, EV charging solutions,
+     and energy efficiency consulting for homes and businesses.</p>
+</div>
+
+<!-- Q2 -->
+<button type="button" class="collapsible">How long does a solar installation take?</button>
+<div class="content">
+  <p>Most residential solar installations take 1–2 days once scaffolding and equipment are in place.</p>
+</div>
+
+<!-- Q3 -->
+<button type="button" class="collapsible">Do solar panels work on cloudy days?</button>
+<div class="content">
+  <p>Yes. Solar panels still produce electricity in cloudy weather, just at a reduced efficiency.</p>
+</div>
+
+<!-- Q4 -->
+<button type="button" class="collapsible">Can I store excess solar energy?</button>
+<div class="content">
+  <p>Yes, our home battery systems allow you to store unused energy for nighttime or power outages.</p>
+</div>
+
+<!-- Q5 -->
+<button type="button" class="collapsible">How long do solar panels last?</button>
+<div class="content">
+  <p>High-quality solar panels typically last 25–30 years while maintaining strong efficiency.</p>
+</div>
+
+<!-- Q6 -->
+<button type="button" class="collapsible">Does Rolsa Green Energy offer maintenance?</button>
+<div class="content">
+  <p>We provide optional annual maintenance packages which include cleaning, inspections, and efficiency checks.</p>
+</div>
+
+<!-- Q7 -->
+<button type="button" class="collapsible">Can I monitor my solar energy production?</button>
+<div class="content">
+  <p>Yes, our installations include an app that tracks energy generation, battery levels, and savings.</p>
+</div>
+
+<!-- Q8 -->
+<button type="button" class="collapsible">Are your systems compatible with EV chargers?</button>
+<div class="content">
+  <p>Absolutely. Our solar and battery systems are designed to integrate with all major EV chargers.</p>
+</div>
+
+<!-- Q9 -->
+<button type="button" class="collapsible">Do I need planning permission for solar panels?</button>
+<div class="content">
+  <p>Most homes do not require planning permission unless they are listed buildings or in special zones.</p>
+</div>
+
+<!-- Q10 -->
+<button type="button" class="collapsible">How much can solar panels reduce my electricity bill?</button>
+<div class="content">
+  <p>Customers typically reduce bills by 50–80%, depending on system size and energy usage.</p>
+</div>
+
+<!-- Q11 -->
+<button type="button" class="collapsible">What warranties does Rolsa Green Energy offer?</button>
+<div class="content">
+  <p>We offer a 25-year panel performance warranty and a 10-year workmanship guarantee.</p>
+</div>
+
+<!-- Q12 -->
+<button type="button" class="collapsible">Can solar panels power my home during a blackout?</button>
+<div class="content">
+  <p>Yes, but only if you have a battery system or a hybrid inverter installed.</p>
+</div>
+
+<!-- Q13 -->
+<button type="button" class="collapsible">Do you offer financing or payment plans?</button>
+<div class="content">
+  <p>We provide flexible financing options, including monthly payment plans and zero-interest agreements.</p>
+</div>
+
+<!-- Q14 -->
+<button type="button" class="collapsible">How much roof space do I need?</button>
+<div class="content">
+  <p>A typical home system requires 20–30 square meters of good sunlight-facing roof space.</p>
+</div>
+
+<!-- Q15 -->
+<button type="button" class="collapsible">Can Rolsa Green Energy install panels on flat roofs?</button>
+<div class="content">
+  <p>Yes, we use angled mounting systems designed for flat or low-slope roofs.</p>
+</div>
+
+<!-- Q16 -->
+<button type="button" class="collapsible">What areas do you cover?</button>
+<div class="content">
+  <p>We install across the UK, with regional teams in major cities for fast response times.</p>
+</div>
+
+<!-- Q17 -->
+<button type="button" class="collapsible">How environmentally friendly are your systems?</button>
+<div class="content">
+  <p>Our solar panels are made from recyclable materials and help reduce carbon emissions immediately.</p>
+</div>
+
+<!-- Q18 -->
+<button type="button" class="collapsible">Can I sell excess energy back to the grid?</button>
+<div class="content">
+  <p>Yes, you can earn money through the Smart Export Guarantee (SEG) by feeding excess solar energy back into the grid.</p>
+</div>
+
+<!-- Q19 -->
+<button type="button" class="collapsible">Do solar panels increase property value?</button>
+<div class="content">
+  <p>Homes with solar installations typically see a 2–5% increase in value due to energy savings.</p>
+</div>
+
+<!-- Q20 -->
+<button type="button" class="collapsible">Does Rolsa Green Energy offer commercial installations?</button>
+<div class="content">
+  <p>Yes, we design and install solar and energy-storage systems for businesses, schools, farms, and industrial facilities.</p>
+</div>
+
+<!-- Q21 -->
+<button type="button" class="collapsible">What is Rolsa Green Energy’s mission?</button>
+<div class="content">
+  <p>Our mission is to make clean, affordable renewable energy accessible for homes and businesses across the UK.</p>
+</div>
+
+<!-- Q22 -->
+<button type="button" class="collapsible">How long has Rolsa Green Energy been in business?</button>
+<div class="content">
+  <p>Rolsa Green Energy has been providing sustainable energy solutions for over 10 years.</p>
+</div>
+
+<!-- Q23 -->
+<button type="button" class="collapsible">Is Rolsa Green Energy fully certified?</button>
+<div class="content">
+  <p>Yes, we are MCS-certified and work exclusively with accredited installers and manufacturers.</p>
+</div>
+
+<!-- Q24 -->
+<button type="button" class="collapsible">Does Rolsa Green Energy offer free consultations?</button>
+<div class="content">
+  <p>Yes, we offer free remote or on-site consultations to assess your energy needs and roof suitability.</p>
+</div>
+
+<!-- Q25 -->
+<button type="button" class="collapsible">What payment methods do you accept?</button>
+<div class="content">
+  <p>We accept debit cards, credit cards, Direct Debit, bank transfers, and approved financing plans.</p>
+</div>
+
+<!-- Q26 -->
+<button type="button" class="collapsible">Do you offer monthly payment plans?</button>
+<div class="content">
+  <p>Yes, we offer flexible monthly payment options including 0% interest plans depending on system type.</p>
+</div>
+
+<!-- Q27 -->
+<button type="button" class="collapsible">Is there a deposit required?</button>
+<div class="content">
+  <p>Yes, we usually require a small deposit (10–20%) to secure equipment and schedule the installation.</p>
+</div>
+
+<!-- Q28 -->
+<button type="button" class="collapsible">Are there any hidden fees?</button>
+<div class="content">
+  <p>No. All costs, installation charges, and equipment pricing are clearly outlined before any agreement is made.</p>
+</div>
+
+<!-- Q29 -->
+<button type="button" class="collapsible">Do you charge for site inspections?</button>
+<div class="content">
+  <p>Basic assessments are free. More detailed engineering surveys may incur a small fee which is refunded if you continue with installation.</p>
+</div>
+
+<!-- Q30 -->
+<button type="button" class="collapsible">How can I get a quote?</button>
+<div class="content">
+  <p>You can request a quote through our website, by phone, or through a free in-person consultation.</p>
+</div>
+
+<!-- Q31 -->
+<button type="button" class="collapsible">How long does it take to receive a quote?</button>
+<div class="content">
+  <p>Most quotes are prepared and delivered within 24–48 hours after your assessment.</p>
+</div>
+
+<!-- Q32 -->
+<button type="button" class="collapsible">What factors affect the total cost?</button>
+<div class="content">
+  <p>System size, roof type, panel brand, battery capacity, scaffolding needs, and optional extras all affect pricing.</p>
+</div>
+
+<!-- Q33 -->
+<button type="button" class="collapsible">Can I upgrade my system later?</button>
+<div class="content">
+  <p>Yes, our systems are modular and can be expanded with more panels, larger batteries, or EV chargers.</p>
+</div>
+
+<!-- Q34 -->
+<button type="button" class="collapsible">Do you offer emergency support?</button>
+<div class="content">
+  <p>Yes, our support team offers 24/7 help for urgent issues and a dedicated hotline for technical assistance.</p>
+</div>
+
+<!-- Q35 -->
+<button type="button" class="collapsible">How do I contact Rolsa Green Energy?</button>
+<div class="content">
+  <p>You can reach us by phone, email, or the contact form on our website. Responses typically take less than 24 hours.</p>
+</div>
+
+<!-- Q36 -->
+<button type="button" class="collapsible">What are Rolsa Green Energy’s core values?</button>
+<div class="content">
+  <p>Our core values are sustainability, honesty, innovation, customer transparency, and long-term environmental responsibility.</p>
+</div>
+
+<!-- Q37 -->
+<button type="button" class="collapsible">When was Rolsa Green Energy founded?</button>
+<div class="content">
+  <p>Rolsa Green Energy was founded in 2015 with the goal of making clean energy accessible to everyone.</p>
+</div>
+
+<!-- Q38 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy reduce carbon footprints?</button>
+<div class="content">
+  <p>We provide solar systems, home batteries, and energy-efficient solutions that significantly reduce grid reliance and carbon emissions.</p>
+</div>
+
+<!-- Q39 -->
+<button type="button" class="collapsible">Can Rolsa Green Energy calculate my home's carbon savings?</button>
+<div class="content">
+  <p>Yes. During your assessment, we provide an estimated annual CO₂ reduction based on your solar system size and energy usage.</p>
+</div>
+
+<!-- Q40 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy ensure product quality?</button>
+<div class="content">
+  <p>We partner with top-tier manufacturers and only use MCS-certified installers to guarantee long-lasting, efficient systems.</p>
+</div>
+
+<!-- Q41 -->
+<button type="button" class="collapsible">Do you offer energy financing for businesses?</button>
+<div class="content">
+  <p>Yes. We provide tailored financing packages for commercial clients, including lease-to-own and green business loans.</p>
+</div>
+
+<!-- Q42 -->
+<button type="button" class="collapsible">Are there government grants or incentives available?</button>
+<div class="content">
+  <p>Several green energy incentives and export tariffs are available depending on location. We help customers apply for all eligible schemes.</p>
+</div>
+
+<!-- Q43 -->
+<button type="button" class="collapsible">Does Rolsa Green Energy use sustainable materials?</button>
+<div class="content">
+  <p>Yes. Our panels and mounting systems use recyclable materials, and we work with suppliers that follow strict environmental standards.</p>
+</div>
+
+<!-- Q44 -->
+<button type="button" class="collapsible">What makes Rolsa Green Energy different from other solar companies?</button>
+<div class="content">
+  <p>We focus on long-term customer support, transparent pricing, industry-leading warranties, and fully customizable renewable solutions.</p>
+</div>
+
+<!-- Q45 -->
+<button type="button" class="collapsible">How does Rolsa Green Energy support the community?</button>
+<div class="content">
+  <p>We regularly support local environmental projects, provide educational workshops, and invest in green initiatives across the UK.</p>
+</div>
+
+<!-- Q46 -->
+<button type="button" class="collapsible">Who founded Rolsa Green Energy?</button>
+<div class="content">
+  <p>Rolsa Green Energy was founded by a group of renewable-energy specialists who wanted to make affordable green energy accessible to all households.</p>
+</div>
+
+<!-- Q47 -->
+<button type="button" class="collapsible">When was Rolsa Green Energy established?</button>
+<div class="content">
+  <p>The company was founded in 2015 and has grown to become one of the region’s most trusted renewable energy providers.</p>
+</div>
+
+<!-- Q48 -->
+<button type="button" class="collapsible">Why was Rolsa Green Energy created?</button>
+<div class="content">
+  <p>Our founders wanted to reduce carbon emissions, lower household energy bills, and accelerate the UK’s transition to clean, renewable power.</p>
+</div>
+
+<!-- Q49 -->
+<button type="button" class="collapsible">What inspired the name “Rolsa Green Energy”?</button>
+<div class="content">
+  <p>The name represents our commitment to ‘rolling forward’ sustainable solutions and providing environmentally friendly energy options.</p>
+</div>
+
+<!-- Q50 -->
+<button type="button" class="collapsible">How has Rolsa Green Energy evolved since it began?</button>
+<div class="content">
+  <p>Since 2015, we’ve expanded from small local installations to large-scale solar, battery, and EV charging solutions for both homes and businesses.</p>
+</div>
+
+<!-- Q51 -->
+<button type="button" class="collapsible">What was Rolsa Green Energy’s first major project?</button>
+<div class="content">
+  <p>Our first large project involved a residential solar installation that reduced the customer’s energy bills by 60%, setting the standard for our future work.</p>
+</div>
+
+<!-- Q52 -->
+<button type="button" class="collapsible">What challenges did the company face early on?</button>
+<div class="content">
+  <p>Early challenges included limited public awareness of renewable energy options and the high cost of solar technology at the time.</p>
+</div>
+
+<!-- Q53 -->
+<button type="button" class="collapsible">How many employees did Rolsa Green Energy start with?</button>
+<div class="content">
+  <p>The company began with a small team of five engineers and admin staff. Today, we employ a much larger team of certified energy professionals.</p>
+</div>
+
+<!-- Q54 -->
+<button type="button" class="collapsible">Has Rolsa Green Energy stayed true to its original mission?</button>
+<div class="content">
+  <p>Yes. Our mission has always been sustainability, transparency, and affordable green energy — values that still guide every decision we make.</p>
+</div>
+
+<!-- Q55 -->
+<button type="button" class="collapsible">What are Rolsa Green Energy’s future goals?</button>
+<div class="content">
+  <p>Our future goals include expanding into smart-home integration, improving battery technology, and continuing to reduce carbon emissions nationwide.</p>
+</div>
+
+
+ 
+<!-- End of FAQs  -->
+
+<!-- JavaScript for collapsible functionality -->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+function searchFAQ() {
+    let input = document.getElementById('faqSearch').value.toLowerCase();
+    let questions = document.getElementsByClassName('collapsible');
+
+    for (let i = 0; i < questions.length; i++) {
+        let text = questions[i].innerText.toLowerCase();
+
+        // If the heading contains the searched word
+        if (text.includes(input)) {
+            questions[i].style.display = "";
+            questions[i].nextElementSibling.style.display = "none"; // keep it closed when filtering
+        } else {
+            questions[i].style.display = "none";
+            questions[i].nextElementSibling.style.display = "none"; // hide content
+        }
+    }
+}
+</script>
+</div>
+
+
+
+{% endblock %}

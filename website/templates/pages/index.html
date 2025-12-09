@@ -1,0 +1,182 @@
+{% extends 'pages/base.html' %}
+
+{% block banner_buttons %}
+
+
+
+<div class="banner-buttons">
+    <a href="#" class="banner-btn">Get a Quote</a>
+    <a href="{% url 'company' %}#core-values" class="banner-btn">Our Values</a>
+</div>
+
+
+    {% endblock %}
+
+    {% block content %}
+
+<div class="welcome-section">
+    <h1 class="welcome-title">Welcome to Rolsa Technologies</h1>
+    <p class="welcome-text">
+        Already have an account?
+        <a href="{% url 'login' %}" class="login-link">Login here</a>
+    </p>
+</div>
+
+<div class="intro">
+    <img src="https://picsum.photos/1920/700" alt="Intro Image">
+    <div class="intro-text">
+        
+        <h2>🌱 Rolsa Green Energy Technologies — Powering a Smarter, Greener Future</h2>
+        <p>
+            Imagine a home or business where clean solar power fuels your day, intelligent battery systems store energy for when you need it most, and every part of your property works together in a seamless, responsive energy ecosystem.
+At Rolsa Green Energy Technologies, we’re turning that vision into reality.
+
+We design and deliver advanced renewable energy solutions that make your environment more efficient, more sustainable, and more independent. With cutting-edge solar technology and smart energy management, we empower you to take control of your energy future—reducing costs, reducing carbon, and redefining what's possible.
+
+
+        </p>
+    </div>
+</div>
+<!-- Our Features  Section -->
+
+<div class="display">
+
+    <div class="card">
+        <i class="fa-solid fa-bolt icon"></i>
+        <h3>Smart energy system</h3>
+        <p>Advanced energy technology designed to optimize power usage for maximum efficiency.</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-award icon"></i>
+        <h3>Warranty</h3>
+        <p>Decades of innovation ensure long-lasting reliability.</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-star icon"></i>
+        <h3>Warranty</h3>
+        <p>Guarantees peace of mind and trusted protection.</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-lightbulb icon"></i>
+        <h3>Solutions</h3>
+        <p>Smart and effective solutions tailored for your energy needs.</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-gears icon"></i>
+        <h3>Seamless process</h3>
+        <p>A smooth, end-to-end experience from setup to completion.</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-circle-check icon"></i>
+        <h3>Quality</h3>
+        <p>Premium quality backed by expert engineering and high standards.</p>
+    </div>
+
+</div>
+
+<!-- End of Features Section -->
+
+
+<!-- Example of Bootstrap Collapse Component -->`
+
+<div class="collapse-container">
+    <button class="collapse-btn">Some of our Systems</button>
+
+    <div class="collapse-content">
+    <div class="digital-systems">
+
+        <!-- Solar Energy Systems -->
+        <div class="system">
+            <i class="fa-solid fa-solar-panel system-icon"></i>
+            <div class="system-text">
+                <h2>Solar Energy Systems</h2>
+                <p>
+                    Our solar solutions are designed to deliver maximum efficiency and long-term reliability.
+                    Using advanced photovoltaic technology, we ensure that every ray of sunlight is converted into
+                    clean, renewable energy for your home or business.
+                </p>
+                <ul>
+                    <li>High-efficiency mono and polycrystalline panels</li>
+                    <li>Durable, weather-resistant mounting structures</li>
+                    <li>Real-time monitoring of solar performance</li>
+                    <li>Reduced electricity bills and long-term savings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Smart Battery Storage -->
+        <div class="system">
+            <i class="fa-solid fa-battery-full system-icon"></i>
+            <div class="system-text">
+                <h2>Smart Battery Storage</h2>
+                <p>
+                    Store excess solar energy and use it whenever you need it. Our intelligent battery
+                    systems learn your energy habits, power your home during outages, and ensure you stay
+                    efficient around the clock.
+                </p>
+                <ul>
+                    <li>Automatically stores unused solar power</li>
+                    <li>Backup energy during grid outages</li>
+                    <li>Smart load-balancing for day & night usage</li>
+                    <li>Long-lasting lithium battery technology</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Energy Management Systems -->
+        <div class="system">
+            <i class="fa-solid fa-plug-circle-bolt system-icon"></i>
+            <div class="system-text">
+                <h2>Energy Management Systems</h2>
+                <p>
+                    Take full control of your energy ecosystem. Our smart energy management system connects
+                    your solar panels, batteries, and appliances into one intelligent network that adapts to your
+                    lifestyle.
+                </p>
+                <ul>
+                    <li>Track energy production and consumption</li>
+                    <li>AI-powered optimisation to reduce waste</li>
+                    <li>Automated switching between grid and solar</li>
+                    <li>Integrated mobile app for remote control</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+    const btn = document.querySelector('.collapse-btn');
+    const content = document.querySelector('.collapse-content');
+
+    btn.addEventListener('click', () => {
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;  // collapse
+            btn.textContent = "Show More";
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";  // expand smoothly
+            btn.textContent = "Show Less";
+        }
+    });
+</script>
+
+.
+{% endblock %}
